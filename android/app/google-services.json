@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "927865719669",
+    "project_id": "lovepeople-f0861",
+    "storage_bucket": "lovepeople-f0861.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:927865719669:android:6d82b141fe97f8c2c9a13c",
+        "android_client_info": {
+          "package_name": "com.lovepeople_firebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "927865719669-lv410987mje1500q8qfq94veq3jait3i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4daRKqc1ROT-BF2o6Qo5xKYGcHUabsNw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "927865719669-lv410987mje1500q8qfq94veq3jait3i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

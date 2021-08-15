@@ -23,6 +23,9 @@ class RoomRepository {
 
   void listenRooms(ValueChanged<List<RoomChat>> listen) async {
     reference.onValue.listen((event) {
+      if (event.snapshot.value == null) {
+        return;
+      }
       List<RoomChat> groups = [];
       final data = Map.from(event.snapshot.value);
       data.forEach((key, value) {

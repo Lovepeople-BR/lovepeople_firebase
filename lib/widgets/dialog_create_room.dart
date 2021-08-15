@@ -9,6 +9,8 @@ class DialogCreateRoom extends StatefulWidget {
 }
 
 class _DialogCreateRoomState extends State<DialogCreateRoom> {
+
+  final TextEditingController _controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -21,7 +23,9 @@ class _DialogCreateRoomState extends State<DialogCreateRoom> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text('Criar nova sala'),
-                TextField(),
+                TextField(
+                  controller: _controller,
+                ),
                 SizedBox(
                   height: 20,
                 ),
@@ -29,11 +33,16 @@ class _DialogCreateRoomState extends State<DialogCreateRoom> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        widget.onCreate?.call(_controller.text);
+                        Navigator.pop(context);
+                      },
                       child: Text('Criar'),
                     ),
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
                       child: Text('Cancelar'),
                     ),
                   ],

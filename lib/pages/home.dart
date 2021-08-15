@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lovepeople_firebase/model/room_chat.dart';
+import 'package:lovepeople_firebase/pages/chat.dart';
 import 'package:lovepeople_firebase/repository/room_repository.dart';
 import 'package:lovepeople_firebase/widgets/dialog_create_room.dart';
 
@@ -37,7 +38,13 @@ class _HomePageState extends State<HomePage> {
             margin: EdgeInsets.all(10),
             elevation: 4,
             child: ListTile(
-              title: Text(rooms[index].name ?? ''),
+              onTap: () {
+                Navigator.of(context).pushNamed(
+                  ChatPage.routeName,
+                  arguments: rooms[index],
+                );
+              },
+              title: Text(rooms[index].name),
             ),
           );
         },
@@ -65,7 +72,13 @@ class _HomePageState extends State<HomePage> {
         // retorna um objeto do tipo Dialog
         return DialogCreateRoom(
           onCreate: (name) {
-            _repository.creteRoom(name);
+            if (!rooms.contains(name)) {
+              _repository.creteRoom(name);
+            } else {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text('Sala já existe!')),
+              );
+            }
           },
         );
       },

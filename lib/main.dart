@@ -2,6 +2,7 @@ import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_analytics/observer.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:lovepeople_firebase/pages/chat.dart';
 import 'package:lovepeople_firebase/pages/home.dart';
 import 'package:lovepeople_firebase/pages/login.dart';
 
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
       routes: {
         ...LoginPage.route,
         ...HomePage.route,
+        ...ChatPage.route,
       },
       initialRoute: '/',
     );

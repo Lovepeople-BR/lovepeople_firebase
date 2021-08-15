@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lovepeople_firebase/model/room_chat.dart';
 import 'package:lovepeople_firebase/pages/chat.dart';
+import 'package:lovepeople_firebase/pages/login.dart';
+import 'package:lovepeople_firebase/repository/auth_repository.dart';
 import 'package:lovepeople_firebase/repository/room_repository.dart';
 import 'package:lovepeople_firebase/widgets/dialog_create_room.dart';
 
@@ -30,6 +32,14 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Home'),
+        actions: [
+          IconButton(
+              onPressed: () async {
+                await AuthRepository().logout();
+                Navigator.of(context).pushNamed(LoginPage.routeName);
+              },
+              icon: Icon(Icons.exit_to_app))
+        ],
       ),
       body: ListView.builder(
         itemCount: rooms.length,

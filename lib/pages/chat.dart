@@ -74,7 +74,7 @@ class _ChatPageState extends State<ChatPage> {
                       decoration: InputDecoration(
                         filled: true,
                         fillColor: Colors.white,
-                        hintText: 'Digite sua mensagem',
+                        hintText: 'Digite sua',
                         contentPadding: EdgeInsets.symmetric(
                           horizontal: 10,
                         ),
@@ -97,6 +97,7 @@ class _ChatPageState extends State<ChatPage> {
                           formKey.currentState?.validate() == true) {
                         await _chatRepository.addMessage(
                           Message(
+                            id: messages.length + 1,
                             email: user!.email ?? '',
                             userName: user!.displayName ?? '',
                             urlAvatar: user!.photoURL ?? '',
@@ -128,7 +129,7 @@ class _ChatPageState extends State<ChatPage> {
         setState(() {
           this.messages = messages;
           this.messages.sort((last, next) {
-            return next.getDateTime().compareTo(last.getDateTime());
+            return next.id.compareTo(last.id);
           });
         });
       });

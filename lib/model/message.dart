@@ -1,4 +1,5 @@
 class Message {
+  int id;
   String email;
   String userName;
   String urlAvatar;
@@ -6,6 +7,7 @@ class Message {
   String time;
 
   Message({
+    this.id = 0,
     this.email = '',
     this.userName = '',
     this.urlAvatar = '',
@@ -14,7 +16,8 @@ class Message {
   });
 
   Message.fromJson(Map json)
-      : email = json['email'],
+      : id = json['id'] ?? 0,
+        email = json['email'],
         userName = json['userName'],
         urlAvatar = json['urlAvatar'],
         text = json['text'],
@@ -26,6 +29,7 @@ class Message {
 
   Map toJson() {
     return {
+      'id': id,
       'email': email,
       'userName': userName,
       'urlAvatar': urlAvatar,

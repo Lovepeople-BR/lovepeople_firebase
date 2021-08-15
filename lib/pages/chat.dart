@@ -74,6 +74,7 @@ class _ChatPageState extends State<ChatPage> {
                       decoration: InputDecoration(
                         filled: true,
                         fillColor: Colors.white,
+                        hintText: 'Digite sua mensagem',
                         contentPadding: EdgeInsets.symmetric(
                           horizontal: 10,
                         ),
@@ -100,6 +101,7 @@ class _ChatPageState extends State<ChatPage> {
                             userName: user!.displayName ?? '',
                             urlAvatar: user!.photoURL ?? '',
                             text: _controller.text,
+                            time: DateTime.now().toIso8601String(),
                           ),
                         );
                         _controller.text = '';
@@ -122,8 +124,13 @@ class _ChatPageState extends State<ChatPage> {
         widget.room!.name.replaceAll(' ', ''),
       );
     _chatRepository.listenMessages((messages) {
-      setState(() {
-        this.messages = messages.reversed.toList();
+      Future.delayed(Duration.zero, () {
+        setState(() {
+          this.messages = messages;
+          this.messages.sort((last, next) {
+            return next.getDateTime().compareTo(last.getDateTime());
+          });
+        });
       });
     });
   }
